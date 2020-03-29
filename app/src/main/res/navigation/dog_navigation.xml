@@ -19,12 +19,15 @@
         android:id="@+id/detailFragment"
         android:name="com.app4funbr.dogs.view.DetailFragment"
         android:label="DetailFragment" >
+
         <action
             android:id="@+id/actionListFragment"
             app:destination="@id/listFragment" />
+
         <argument
             android:name="dogUuid"
             android:defaultValue="0"
             app:argType="integer"/>
+
     </fragment>
 </navigation>
