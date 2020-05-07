@@ -42,7 +42,7 @@ class ListFragment : Fragment() {
             recycler_dogs?.visibility = View.GONE
             text_recycler_error?.visibility = View.GONE
             progress?.visibility = View.GONE
-            viewModel.refresh()
+            viewModel.refreshBypassCache()
             refresh_layout?.isRefreshing = false
         }
 
