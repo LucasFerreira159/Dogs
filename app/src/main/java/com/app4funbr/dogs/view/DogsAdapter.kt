@@ -3,16 +3,17 @@ package com.app4funbr.dogs.view
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.databinding.DataBindingUtil
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.RecyclerView
 import com.app4funbr.dogs.R
+import com.app4funbr.dogs.databinding.ItemDogBinding
 import com.app4funbr.dogs.model.DogBreed
-import com.app4funbr.dogs.util.getProgressDrawable
-import com.app4funbr.dogs.util.loadImage
 import kotlinx.android.synthetic.main.item_dog.view.*
 
-class DogsAdapter (val dogsList: ArrayList<DogBreed>) :
-    RecyclerView.Adapter<DogsAdapter.DogsViewHolder>() {
+class DogsAdapter(val dogsList: ArrayList<DogBreed>) :
+    RecyclerView.Adapter<DogsAdapter.DogsViewHolder>(),
+    DogClickListener {
 
     fun updateDogList(newDogList: List<DogBreed>) {
         dogsList.clear()
@@ -22,7 +23,8 @@ class DogsAdapter (val dogsList: ArrayList<DogBreed>) :
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): DogsViewHolder {
         val inflater = LayoutInflater.from(parent.context)
-        val view = inflater.inflate(R.layout.item_dog, parent, false)
+        val view =
+            DataBindingUtil.inflate<ItemDogBinding>(inflater, R.layout.item_dog, parent, false)
         return DogsViewHolder(view)
     }
 
@@ -31,19 +33,16 @@ class DogsAdapter (val dogsList: ArrayList<DogBreed>) :
     }
 
     override fun onBindViewHolder(holder: DogsViewHolder, position: Int) {
-        holder.view.text_name.text = dogsList[position].dogBreed
-        holder.view.text_lifespan.text = dogsList[position].lifeSpan
-        holder.view.setOnClickListener {
-            val action = ListFragmentDirections.actionDetailFragment()
-            action.dogUuid = dogsList[position].uuid
-            Navigation.findNavController(it).navigate(action)
-        }
-        holder.view.image.loadImage(
-            dogsList[position].imageUrl,
-            getProgressDrawable(holder.view.context))
+        holder.view.dog = dogsList[position]
+        holder.view.listener = this
     }
 
-    class DogsViewHolder(var view:View): RecyclerView.ViewHolder(view) {
-
+    override fun onDogClicked(v: View) {
+        val uuid = v.dogId.text.toString().toInt()
+        val action = ListFragmentDirections.actionDetailFragment()
+        action.dogUuid = uuid
+        Navigation.findNavController(v).navigate(action)
     }
+
+    class DogsViewHolder(var view: ItemDogBinding) : RecyclerView.ViewHolder(view.root)
 }

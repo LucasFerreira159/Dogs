@@ -2,6 +2,12 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <data>
+        <variable
+            name="dog"
+            type="com.app4funbr.dogs.model.DogBreed" />
+    </data>
+
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -17,8 +23,9 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentTop="true"
                 android:minHeight="200dp"
+                android:imageUrl="@{dog.imageUrl}"
                 android:scaleType="fitCenter"
-                android:src="@mipmap/ic_launcher" />
+                />
 
             <TextView
                 android:id="@+id/text_dog_name"
@@ -28,7 +35,7 @@
                 android:layout_below="@+id/image_dog"
                 android:layout_centerHorizontal="true"
                 android:layout_margin="4dp"
-                tools:text="Dog Name" />
+                android:text="@{dog.dogBreed}" />
 
             <TextView
                 android:id="@+id/text_dog_purpose"
@@ -38,7 +45,7 @@
                 android:layout_below="@+id/text_dog_name"
                 android:layout_centerHorizontal="true"
                 android:layout_margin="4dp"
-                tools:text="Dog Purpose" />
+                android:text="@{dog.bredFour}"/>
 
             <TextView
                 android:id="@+id/text_dog_temperament"
@@ -48,7 +55,7 @@
                 android:layout_below="@+id/text_dog_purpose"
                 android:layout_centerHorizontal="true"
                 android:layout_margin="4dp"
-                tools:text="Dog Temperament" />
+                android:text="@{dog.temperament}" />
 
             <TextView
                 android:id="@+id/text_lifespan"
@@ -58,7 +65,7 @@
                 android:layout_below="@+id/text_dog_temperament"
                 android:layout_centerHorizontal="true"
                 android:layout_margin="4dp"
-                tools:text="Lifespan" />
+                android:text="@{dog.lifeSpan}" />
         </RelativeLayout>
 
     </FrameLayout>
