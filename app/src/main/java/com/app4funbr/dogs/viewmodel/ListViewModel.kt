@@ -7,6 +7,7 @@ import androidx.lifecycle.ViewModel
 import com.app4funbr.dogs.DogsApiService
 import com.app4funbr.dogs.model.DogBreed
 import com.app4funbr.dogs.model.DogDatabase
+import com.app4funbr.dogs.util.NotificationHelper
 import com.app4funbr.dogs.util.SharedPreferencesHelper
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
@@ -70,6 +71,7 @@ class ListViewModel(application: Application) : BaseViewModel(application) {
                             "Recuperando informações do endpoint",
                             Toast.LENGTH_SHORT
                         ).show()
+                        NotificationHelper(getApplication()).createNotification()
                     }
 
                     override fun onError(e: Throwable) {
