@@ -11,9 +11,10 @@ Aplicativo construido para aplicar alguns dos novos recursos do Android, que faz
 * LiveData
 * ViewModel
 * Room
-* Notifications - Desenvolvimento
+* Navigation
+* Notifications
 * Permissões e Compartilhamento - Desenvolvimento
-* Preferences - Desenvolvimento
+* Preferences
 * Multidex - Desenvolvimento
 * Retrofit
 * OkHttp
