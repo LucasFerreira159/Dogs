@@ -6,12 +6,17 @@
         <variable
             name="dog"
             type="com.app4funbr.dogs.model.DogBreed" />
+        
+        <variable
+            name="palette"
+            type="com.app4funbr.dogs.model.DogPalette" />
     </data>
 
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".view.DetailFragment">
+        tools:context=".view.DetailFragment"
+        android:background="@{palette.color}">
 
         <RelativeLayout
             android:layout_width="match_parent"
